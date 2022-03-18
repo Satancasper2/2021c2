@@ -1,23 +1,22 @@
 #include<stdio.h>
-#include<string.h>
 char line[2000];
-int palindrome()
-{
-	int N=strlen(line);
-	for(int i=0;i<N;i++)
-	{
-		if(line[i]!=line[N-1-i])
-		return 0;
-	}
-	return 1;
-}
 int main()
 {
-	while(scanf("%s",line)==1)
+	int t=1;
+	while(gets(line))
 	{
-		int p=palindrome();
-		if(p==0) printf("%s -- is not a palindrome.\n\n",line);
-		if(p==1) printf("%s -- is a palindrome.\n\n",line);
+		if(t>1)printf("\n");
+		int ans[256]={};
+		for(int i=0;line[i]!=0;i++)
+		{
+			char c=line[i];
+			ans[c]++;
+		}
+		for(int c=128;c>=32;c--)
+		{
+			if(ans[c]>0)printf("%d %d\n",c,ans[c]);
+		}
+		t++;
 	}
 	return 0;
 }
